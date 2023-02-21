@@ -1,0 +1,85 @@
+package YouMatter;
+
+import java.net.URL;
+import java.util.concurrent.TimeUnit;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.remote.DesiredCapabilities;
+import org.testng.Assert;
+import org.testng.annotations.Test;
+import io.appium.java_client.android.AndroidDriver;
+
+public class Login0 {
+	AndroidDriver driver;
+	
+	@Test
+	public void YouMatterr() throws Exception {
+		
+		System.out.println(" Application started...");
+		DesiredCapabilities cap = new DesiredCapabilities();
+		cap.setCapability("deviceName", "Redmi Note 7 Pro");
+		cap.setCapability("udid", "95b9be6e");
+		cap.setCapability("platformName", "Android");
+		cap.setCapability("platformVersion", "10");
+		cap.setCapability("appPackage", "com.sudlife.youmatter.app.uat");
+		cap.setCapability("appActivity", "com.caressa.allizhealth.app.MainActivity");
+		cap.setCapability("autograntpermission", "true");
+		cap.setCapability("automationName", "UiAutomator2");
+		cap.setCapability("IgnoreHiddenApiPolicyError", "true");	
+		driver = new AndroidDriver(new URL("http://127.0.0.1:4723"),cap);
+		driver.manage().timeouts().implicitlyWait(10,TimeUnit.SECONDS);		
+	
+		WebElement firstPage = driver.findElement(By.id("com.sudlife.youmatter.app.uat:id/btnNext"));
+		firstPage.click();
+		WebElement secondPage = driver.findElement(By.id("com.sudlife.youmatter.app.uat:id/btnNext"));
+		secondPage.click();
+		WebElement thirdPage = driver.findElement(By.id("com.sudlife.youmatter.app.uat:id/btnNext"));
+		thirdPage.click();
+				
+		//Printing toast msg and comparing actual toast msg and written toast msg
+		WebElement loginBtn = driver.findElement(By.id("com.sudlife.youmatter.app.uat:id/btn_login"));
+		loginBtn.click();
+		String toastMsg = driver.findElement(By.xpath("(//android.widget.Toast)[1]")).getAttribute("name");
+		System.out.println("With Blank fields - " + toastMsg);
+		Assert.assertEquals(toastMsg, "Please accept Terms and Conditions");
+		
+		//Accepting term and conditions(checkbox) and printing toast msg
+		WebElement checkBox = driver.findElement(By.id("com.sudlife.youmatter.app.uat:id/termsCheckBox"));
+		checkBox.click();
+		WebElement detailCheckBox = driver.findElement(By.id("com.sudlife.youmatter.app.uat:id/healthDetailsCheckBox"));
+		detailCheckBox.click();
+		//WebElement loginBtn = driver.findElement(By.id("com.sudlife.youmatter.app.uat:id/btn_login"));
+		loginBtn.click();
+		String toastMsg1 = driver.findElement(By.xpath("(//android.widget.Toast)[1]")).getAttribute("name");
+		System.out.println("Accept Terms & Conditions With Blank fields - " + toastMsg1);
+		Assert.assertEquals(toastMsg1, "Please Enter Valid Email");
+
+		//passing wrong email id and printing toast msg
+		WebElement email = driver.findElement(By.id("com.sudlife.youmatter.app.uat:id/edt_login_emailaddress"));
+		email.sendKeys("preetivishwa017@gmail.com");
+		driver.hideKeyboard(); 
+		//WebElement loginBtn = driver.findElement(By.id("com.sudlife.youmatter.app.uat:id/btn_login"));
+		loginBtn.click();
+		String toastMsg2 = driver.findElement(By.xpath("(//android.widget.Toast)[1]")).getAttribute("name");
+		System.out.println("Accept Terms & Conditions With One field - " + toastMsg2);
+		Assert.assertEquals(toastMsg2 , "Please Enter Valid Password");
+
+		//Passing wrong password and printing toast msg
+		WebElement password = driver.findElement(By.id("com.sudlife.youmatter.app.uat:id/edt_login_password"));
+		password.sendKeys("Admin@12345");
+		driver.hideKeyboard();
+		loginBtn.click();
+		String toastMsg3 = driver.findElement(By.xpath("(//android.widget.Toast)[1]")).getAttribute("name");
+		System.out.println("Accept Terms & Conditions With Blank fields - " + toastMsg3);
+		Assert.assertEquals(toastMsg3, "Invalid user credentials!");
+
+		//passing correct details
+		email.clear();
+		email.sendKeys(".................");
+		driver.hideKeyboard();
+		password.clear();
+		password.sendKeys("...........");
+		driver.hideKeyboard();
+		loginBtn.click();
+		}
+}
