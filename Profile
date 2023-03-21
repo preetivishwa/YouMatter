@@ -1,0 +1,115 @@
+package YouMatter;
+
+import java.net.URL;
+import java.util.List;
+import java.util.concurrent.TimeUnit;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.remote.DesiredCapabilities;
+import org.testng.annotations.Test;
+
+import io.appium.java_client.android.AndroidDriver;
+
+public class Profile {
+AndroidDriver driver;
+	
+	@Test
+	public void YouMatterr() throws Exception {
+		
+		System.out.println(" Application started...");
+		DesiredCapabilities cap = new DesiredCapabilities();
+		cap.setCapability("deviceName", "Redmi Note 7 Pro");
+		cap.setCapability("udid", "95b9be6e");
+		cap.setCapability("platformName", "Android");
+		cap.setCapability("platformVersion", "10");
+		cap.setCapability("appPackage", "com.sudlife.youmatter.app.uat");
+		cap.setCapability("appActivity", "com.caressa.allizhealth.app.MainActivity");
+		cap.setCapability("autograntpermission", "true");
+		cap.setCapability("automationName", "UiAutomator2");
+		cap.setCapability("IgnoreHiddenApiPolicyError", "true");	
+		driver = new AndroidDriver(new URL("http://127.0.0.1:4723"),cap);
+		driver.manage().timeouts().implicitlyWait(10,TimeUnit.SECONDS);		
+		
+	
+		WebElement firstPage = driver.findElement(By.id("com.sudlife.youmatter.app.uat:id/btnNext"));
+		firstPage.click();
+		WebElement secondPage = driver.findElement(By.id("com.sudlife.youmatter.app.uat:id/btnNext"));
+		secondPage.click();
+		WebElement thirdPage = driver.findElement(By.id("com.sudlife.youmatter.app.uat:id/btnNext"));
+		thirdPage.click();
+		
+		
+		//Printing toast msg and comparing actual toast msg and written toast msg
+		WebElement loginBtn = driver.findElement(By.id("com.sudlife.youmatter.app.uat:id/btn_login"));
+		//loginBtn.click();
+		
+		WebElement checkBox = driver.findElement(By.id("com.sudlife.youmatter.app.uat:id/termsCheckBox"));
+		checkBox.click();
+		WebElement detailCheckBox = driver.findElement(By.id("com.sudlife.youmatter.app.uat:id/healthDetailsCheckBox"));
+		detailCheckBox.click();
+		
+		WebElement email = driver.findElement(By.id("com.sudlife.youmatter.app.uat:id/edt_login_emailaddress"));
+		WebElement password = driver.findElement(By.id("com.sudlife.youmatter.app.uat:id/edt_login_password"));
+		
+		//passing correct details
+		email.sendKeys("preetivishwa07@gmail.com");
+		driver.hideKeyboard();
+		password.sendKeys("Admin@12345");
+		driver.hideKeyboard();
+		loginBtn.click();
+				
+		//WebElement skiphra = driver.findElement(By.id("com.sudlife.youmatter.app.uat:id/btn_skip_hra"));
+		//skiphra.click();
+		
+		WebElement profile_icon = driver.findElement(By.xpath("//android.widget.FrameLayout[@content-desc=\"Profile\"]/android.view.ViewGroup/android.widget.TextView"));
+		profile_icon.click();
+		
+		WebElement Permission_btn = driver.findElement(By.id("com.sudlife.youmatter.app.uat:id/btn_right_side"));
+		Permission_btn.click();
+		
+		WebElement Allow_btn = driver.findElement(By.id("com.android.permissioncontroller:id/permission_allow_button"));
+		Allow_btn.click();
+		
+		WebElement Profile_btn_to_edit = driver.findElement(By.id("com.sudlife.youmatter.app.uat:id/img_user_pic"));
+		Profile_btn_to_edit.click();
+		
+		WebElement name_edit = driver.findElement(By.id("com.sudlife.youmatter.app.uat:id/edt_username"));
+		name_edit.click();
+		name_edit.clear();
+		name_edit.sendKeys("Priti Vishwakarma");
+		
+		Thread.sleep(5000);
+		
+		WebElement DOB_Edit= driver.findElement(By.id("com.sudlife.youmatter.app.uat:id/edt_birthdate"));
+		DOB_Edit.click();
+		
+		int DOB= driver.findElements(By.className("android.widget.EditText")).size();
+		List<WebElement> b= driver.findElements(By.className("android.widget.EditText"));
+		
+		
+		
+		b.get(1).clear();
+		b.get(1).sendKeys("09");
+		
+		b.get(0).clear();
+		b.get(0).sendKeys("Sep");
+		
+		
+		b.get(2).clear();
+		b.get(2).sendKeys("1999");
+		
+		WebElement dateokbtn= driver.findElement(By.xpath("//android.widget.Button[@text='OK']"));
+		dateokbtn.click();
+		
+		WebElement updatebtn= driver.findElement(By.id("com.sudlife.youmatter.app.uat:id/btn_update_profile"));
+		updatebtn.click();
+		
+		System.out.println("Profile photo updated successfully");
+		
+		WebElement homebtn= driver.findElement(By.xpath("//android.widget.FrameLayout[@content-desc=\"Home\"]/android.view.ViewGroup/android.widget.TextView"));
+		homebtn.click();
+	
+
+}
+}
