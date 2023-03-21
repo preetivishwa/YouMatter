@@ -1,0 +1,158 @@
+package YouMatter;
+
+import java.net.URL;
+import java.util.concurrent.TimeUnit;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.remote.DesiredCapabilities;
+import org.testng.annotations.Test;
+
+import io.appium.java_client.MobileBy;
+import io.appium.java_client.android.AndroidDriver;
+
+public class Diabetes_Calculator {
+AndroidDriver driver;
+	
+	@Test
+	public void YouMatterr() throws Exception {
+		
+		System.out.println(" Application started...");
+		DesiredCapabilities cap = new DesiredCapabilities();
+		cap.setCapability("deviceName", "Redmi Note 7 Pro");
+		cap.setCapability("udid", "95b9be6e");
+		cap.setCapability("platformName", "Android");
+		cap.setCapability("platformVersion", "10");
+		cap.setCapability("appPackage", "com.sudlife.youmatter.app.uat");
+		cap.setCapability("appActivity", "com.caressa.allizhealth.app.MainActivity");
+		cap.setCapability("autograntpermission", "true");
+		cap.setCapability("automationName", "UiAutomator2");
+		cap.setCapability("IgnoreHiddenApiPolicyError", "true");	
+		driver = new AndroidDriver(new URL("http://127.0.0.1:4723"),cap);
+		driver.manage().timeouts().implicitlyWait(10,TimeUnit.SECONDS);		
+		
+	
+		WebElement firstPage = driver.findElement(By.id("com.sudlife.youmatter.app.uat:id/btnNext"));
+		firstPage.click();
+		WebElement secondPage = driver.findElement(By.id("com.sudlife.youmatter.app.uat:id/btnNext"));
+		secondPage.click();
+		WebElement thirdPage = driver.findElement(By.id("com.sudlife.youmatter.app.uat:id/btnNext"));
+		thirdPage.click();
+		
+		
+		//Printing toast msg and comparing actual toast msg and written toast msg
+		WebElement loginBtn = driver.findElement(By.id("com.sudlife.youmatter.app.uat:id/btn_login"));
+		//loginBtn.click();
+		
+		WebElement checkBox = driver.findElement(By.id("com.sudlife.youmatter.app.uat:id/termsCheckBox"));
+		checkBox.click();
+		WebElement detailCheckBox = driver.findElement(By.id("com.sudlife.youmatter.app.uat:id/healthDetailsCheckBox"));
+		detailCheckBox.click();
+		
+		WebElement email = driver.findElement(By.id("com.sudlife.youmatter.app.uat:id/edt_login_emailaddress"));
+		WebElement password = driver.findElement(By.id("com.sudlife.youmatter.app.uat:id/edt_login_password"));
+		
+		//passing correct details
+		email.sendKeys("preetivishwa07@gmail.com");
+		driver.hideKeyboard();
+		password.sendKeys("Admin@12345");
+		driver.hideKeyboard();
+		loginBtn.click();
+				
+		//WebElement skiphra = driver.findElement(By.id("com.sudlife.youmatter.app.uat:id/btn_skip_hra"));
+		//skiphra.click();
+		
+		WebElement track_btn= driver.findElement(By.xpath("//android.widget.FrameLayout[@content-desc=\"Track\"]/android.widget.ImageView"));
+		track_btn.click();
+		
+		
+		WebElement Diabetes_calculator_btn= driver.findElement(By.xpath("//android.widget.TextView[@text='Diabetes Calculator']"));
+		Diabetes_calculator_btn.click();
+		
+		
+		
+		WebElement edt_age_grp= driver.findElement(By.id("com.sudlife.youmatter.app.uat:id/txtAgeGroup"));
+		edt_age_grp.click();
+		
+		driver.navigate().back();
+		
+		WebElement age_sel= driver.findElement(By.xpath("//android.widget.TextView[@text='35 – 44']"));
+		age_sel.click();
+		
+		
+		WebElement edt_gender= driver.findElement(By.id("com.sudlife.youmatter.app.uat:id/txtGender"));
+		edt_gender.click();
+		
+		WebElement Gender_selection= driver.findElement(By.xpath("//android.widget.TextView[@text='Female']"));
+		Gender_selection.click();
+		
+		
+		
+		
+		WebElement Asian_origin= driver.findElement(By.id("com.sudlife.youmatter.app.uat:id/sw_origin"));
+		Asian_origin.click();
+		Asian_origin.click();
+		
+		WebElement sw_diabetes= driver.findElement(By.id("com.sudlife.youmatter.app.uat:id/sw_diabetes"));
+		sw_diabetes.click();
+		sw_diabetes.click();
+			
+		
+		WebElement sw_bloodSugar= driver.findElement(By.id("com.sudlife.youmatter.app.uat:id/sw_bloodSugar"));
+		sw_bloodSugar.click();
+		sw_bloodSugar.click();
+		
+		
+		WebElement sw_bp_medication= driver.findElement(By.id("com.sudlife.youmatter.app.uat:id/sw_bp_medication"));
+		sw_bp_medication.click();
+		sw_bp_medication.click();
+		
+		
+		WebElement Smoke_y_n= driver.findElement(By.id("com.sudlife.youmatter.app.uat:id/sw_smoke"));
+		Smoke_y_n.click();
+		Smoke_y_n.click();
+		
+		
+		WebElement element = (WebElement) driver.findElement(MobileBy.AndroidUIAutomator(
+		        "new UiScrollable(new UiSelector().scrollable(true)).setMaxSearchSwipes(1)" +
+		         ".scrollIntoView(new UiSelector().text(\"exact_text\"))"));
+		
+				
+		WebElement sw_fruits= driver.findElement(By.id("com.sudlife.youmatter.app.uat:id/sw_fruits"));
+		sw_fruits.click();
+		sw_fruits.click();
+		
+		WebElement sw_exercise= driver.findElement(By.id("com.sudlife.youmatter.app.uat:id/sw_exercise"));
+		sw_exercise.click();
+		sw_exercise.click();
+		
+		
+		WebElement edt_Waist= driver.findElement(By.xpath("//android.widget.TextView[@text='Waist']"));
+		edt_Waist.click();
+		
+		WebElement edt_Waist_n= driver.findElement(By.xpath("//android.widget.Button[@text='26']"));
+		edt_Waist_n.click();
+		
+		
+		WebElement edt_Waist_cm= driver.findElement(By.xpath("//android.widget.LinearLayout[@content-desc=\"Centimeter\"]/android.widget.TextView"));
+		edt_Waist_cm.click();
+		
+		WebElement edt_Waist_cm_n1= driver.findElement(By.xpath("//android.widget.Button[@text='64']"));
+		edt_Waist_cm_n1.click();
+		
+		WebElement Save_btn= driver.findElement(By.xpath("//android.widget.Button[@text='Save']"));
+		Save_btn.click();
+		
+		
+		WebElement Calculate= driver.findElement(By.xpath("//android.widget.Button[@text='Calculate']"));
+		Calculate.click();
+		
+		WebElement Detailed_report_btn= driver.findElement(By.id("com.sudlife.youmatter.app.uat:id/btn_view_report_diabetes"));
+		Detailed_report_btn.click();
+		
+		
+		
+		
+	}
+
+}
