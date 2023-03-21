@@ -1,0 +1,239 @@
+package YouMatter;
+
+import java.net.URL;
+import java.util.concurrent.TimeUnit;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.remote.DesiredCapabilities;
+import org.testng.annotations.Test;
+
+import io.appium.java_client.android.AndroidDriver;
+
+public class Take_HRA {
+AndroidDriver driver;
+	
+	@Test
+	public void YouMatterr() throws Exception {
+		
+		System.out.println(" Application started...");
+		DesiredCapabilities cap = new DesiredCapabilities();
+		cap.setCapability("deviceName", "Redmi Note 7 Pro");
+		cap.setCapability("udid", "95b9be6e");
+		cap.setCapability("platformName", "Android");
+		cap.setCapability("platformVersion", "10");
+		cap.setCapability("appPackage", "com.sudlife.youmatter.app.uat");
+		cap.setCapability("appActivity", "com.caressa.allizhealth.app.MainActivity");
+		cap.setCapability("autograntpermission", "true");
+		cap.setCapability("automationName", "UiAutomator2");
+		cap.setCapability("IgnoreHiddenApiPolicyError", "true");	
+		driver = new AndroidDriver(new URL("http://127.0.0.1:4723"),cap);
+		driver.manage().timeouts().implicitlyWait(10,TimeUnit.SECONDS);		
+		
+	
+		WebElement firstPage = driver.findElement(By.id("com.sudlife.youmatter.app.uat:id/btnNext"));
+		firstPage.click();
+		WebElement secondPage = driver.findElement(By.id("com.sudlife.youmatter.app.uat:id/btnNext"));
+		secondPage.click();
+		WebElement thirdPage = driver.findElement(By.id("com.sudlife.youmatter.app.uat:id/btnNext"));
+		thirdPage.click();
+		
+		
+		//Printing toast msg and comparing actual toast msg and written toast msg
+		WebElement loginBtn = driver.findElement(By.id("com.sudlife.youmatter.app.uat:id/btn_login"));
+		//loginBtn.click();
+		
+		WebElement checkBox = driver.findElement(By.id("com.sudlife.youmatter.app.uat:id/termsCheckBox"));
+		checkBox.click();
+		WebElement detailCheckBox = driver.findElement(By.id("com.sudlife.youmatter.app.uat:id/healthDetailsCheckBox"));
+		detailCheckBox.click();
+		
+
+		WebElement email = driver.findElement(By.id("com.sudlife.youmatter.app.uat:id/edt_login_emailaddress"));
+
+		WebElement password = driver.findElement(By.id("com.sudlife.youmatter.app.uat:id/edt_login_password"));
+		
+		//passing correct details
+		email.sendKeys("preetivishwa07@gmail.com");
+		driver.hideKeyboard();
+		password.sendKeys("Admin@12345");
+		driver.hideKeyboard();
+		loginBtn.click();
+		
+		WebElement Phywell_being = driver.findElement(By.id("com.sudlife.youmatter.app.uat:id/img_physical_wellbeing"));
+		Phywell_being.click();
+		
+		driver.navigate().back();
+		
+		WebElement img_arrow = driver.findElement(By.id("com.sudlife.youmatter.app.uat:id/imgHraArrow"));
+		img_arrow.click();
+		
+		WebElement nxbtn = driver.findElement(By.id("com.sudlife.youmatter.app.uat:id/btnNext"));
+		nxbtn.click();
+		
+		WebElement dnbtn = driver.findElement(By.id("com.sudlife.youmatter.app.uat:id/btnNext"));
+		dnbtn.click();
+		
+		WebElement takehra = driver.findElement(By.id("com.sudlife.youmatter.app.uat:id/btn_start_hra"));
+		takehra.click();
+		
+		WebElement myself = driver.findElement(By.id("com.sudlife.youmatter.app.uat:id/txt_relative"));
+		myself.click();
+		
+		WebElement startassessment= driver.findElement(By.id("com.sudlife.youmatter.app.uat:id/btn_start_hra"));
+		startassessment.click();
+		
+		WebElement btnnx= driver.findElement(By.id("com.sudlife.youmatter.app.uat:id/btn_next"));
+		btnnx.click();
+		
+		WebElement btn_dont_remember= driver.findElement(By.id("com.sudlife.youmatter.app.uat:id/btn_dont_remember"));
+		btn_dont_remember.click();
+		Thread.sleep(2000);
+		
+		/*
+		WebElement btnnxx= driver.findElement(By.id("com.sudlife.youmatter.app.uat:id/btn_next"));
+		btnnxx.click();
+		Thread.sleep(2000);
+		*/
+		
+		WebElement None_btn= driver.findElement(By.xpath("//android.widget.CheckBox[@text='None']"));
+		None_btn.click();
+		Thread.sleep(2000);
+		
+		/*
+		WebElement btnnxx1= driver.findElement(By.id("com.sudlife.youmatter.app.uat:id/btn_next"));
+		btnnxx1.click();
+		Thread.sleep(2000);
+		
+		*/
+		
+		WebElement None_btn1= driver.findElement(By.xpath("//android.widget.CheckBox[@text='None']"));
+		None_btn1.click();
+		Thread.sleep(2000);
+		
+		
+		WebElement None_btn2= driver.findElement(By.xpath("//android.widget.CheckBox[@text='None']"));
+		None_btn2.click();
+		Thread.sleep(2000);
+		
+		WebElement None_btn3= driver.findElement(By.xpath("//android.widget.CheckBox[@text='None']"));
+		None_btn3.click();
+		Thread.sleep(2000);
+		
+		WebElement None_btn4= driver.findElement(By.xpath("//android.widget.CheckBox[@text='None']"));
+		None_btn4.click();
+		Thread.sleep(2000);
+		
+		WebElement None_btn5= driver.findElement(By.xpath("//android.widget.CheckBox[@text='None']"));
+		None_btn5.click();
+		Thread.sleep(2000);
+		
+		
+		
+		WebElement Yes_btn1= driver.findElement(By.xpath("//android.widget.RadioButton[@text='Yes']"));
+		Yes_btn1.click();
+		Thread.sleep(2000);
+		
+		WebElement Yes_btn2= driver.findElement(By.xpath("//android.widget.RadioButton[@text='Yes']"));
+		Yes_btn2.click();
+		Thread.sleep(2000);
+		
+		WebElement alwars_btn1= driver.findElement(By.xpath("//android.widget.RadioButton[@text='Always']"));
+		alwars_btn1.click();
+		Thread.sleep(2000);
+		
+		WebElement sleep_btn= driver.findElement(By.xpath("//android.widget.RadioButton[@text='6 to 8 hrs']"));
+		sleep_btn.click();
+		Thread.sleep(2000);
+						
+		
+		WebElement Smoke_btn= driver.findElement(By.xpath("//android.widget.RadioButton[@text='No, I don’t Smoke']"));
+		Smoke_btn.click();
+		Thread.sleep(2000);
+		
+		WebElement Alcohol_btn= driver.findElement(By.xpath("//android.widget.RadioButton[@text='No, I don't drink']"));
+		Alcohol_btn.click();
+		Thread.sleep(2000);
+						
+		
+		WebElement alwars_btn11= driver.findElement(By.xpath("//android.widget.RadioButton[@text='Always']"));
+		alwars_btn11.click();
+		Thread.sleep(2000);
+		
+		WebElement alwars_btn12= driver.findElement(By.xpath("//android.widget.RadioButton[@text='Always']"));
+		alwars_btn12.click();
+		Thread.sleep(2000);
+		
+		WebElement strong_btn= driver.findElement(By.xpath("//android.widget.RadioButton[@text='Very strong']"));
+		strong_btn.click();
+		Thread.sleep(2000);
+		
+		WebElement completely_btn= driver.findElement(By.xpath("//android.widget.RadioButton[@text='Completely']"));
+		completely_btn.click();
+		Thread.sleep(2000);
+		
+		WebElement alwars_btn13= driver.findElement(By.xpath("//android.widget.RadioButton[@text='Always']"));
+		alwars_btn13.click();
+		Thread.sleep(2000);
+		
+		WebElement shift_btn1= driver.findElement(By.xpath("//android.widget.RadioButton[@text='No']"));
+		shift_btn1.click();
+		Thread.sleep(2000);
+		
+		WebElement shift_btn2= driver.findElement(By.xpath("//android.widget.RadioButton[@text='No']"));
+		shift_btn2.click();
+		Thread.sleep(2000);
+		
+		WebElement None_btn6= driver.findElement(By.xpath("//android.widget.CheckBox[@text='None']"));
+		None_btn6.click();
+		Thread.sleep(2000);
+		
+		WebElement btnnxx2= driver.findElement(By.id("com.sudlife.youmatter.app.uat:id/btn_next"));
+		btnnxx2.click();
+		Thread.sleep(2000);
+		
+		WebElement shift_btn22= driver.findElement(By.xpath("//android.widget.RadioButton[@text='No']"));
+		shift_btn22.click();
+		Thread.sleep(2000);
+		
+		WebElement None_btn7= driver.findElement(By.xpath("//android.widget.CheckBox[@text='None']"));
+		None_btn7.click();
+		Thread.sleep(2000);
+		
+		
+		WebElement Thatsall_btn= driver.findElement(By.id("com.sudlife.youmatter.app.uat:id/btn_next"));
+		Thatsall_btn.click();
+		Thread.sleep(2000);
+		
+		WebElement View_report= driver.findElement(By.id("com.sudlife.youmatter.app.uat:id/btn_View_report"));
+		View_report.click();
+		Thread.sleep(2000);
+		
+		WebElement Download_report_btn= driver.findElement(By.id("com.sudlife.youmatter.app.uat:id/btn_download_report"));
+		Download_report_btn.click();
+		Thread.sleep(2000);
+		
+		
+		/*
+		WebElement takehra = driver.findElement(By.id("com.sudlife.youmatter.app.uat:id/btn_start_hra"));
+		takehra.click();
+		
+		WebElement myself = driver.findElement(By.id("com.sudlife.youmatter.app.uat:id/btn_start_hra"));
+		myself.click();
+		
+		WebElement startassessment= driver.findElement(By.id("com.sudlife.youmatter.app.uat:id/btn_start_hra"));
+		startassessment.click();
+		
+		WebElement height= driver.findElement(By.xpath("//android.widget.EditText[@text='Login With']"));
+		height.sendKeys("144");
+		
+		
+		//WebElement skiphra = driver.findElement(By.id("com.sudlife.youmatter.app.uat:id/btn_skip_hra"));
+		//skiphra.click();
+		
+		*/
+		}
+}
+
+
+
