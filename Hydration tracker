@@ -1,0 +1,110 @@
+package YouMatter;
+
+import java.net.URL;
+import java.util.concurrent.TimeUnit;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.remote.DesiredCapabilities;
+import org.testng.annotations.Test;
+
+import io.appium.java_client.MobileBy;
+import io.appium.java_client.android.AndroidDriver;
+
+public class Hydration_Tracker {
+AndroidDriver driver;
+	
+	@Test
+	public void YouMatterr() throws Exception {
+		
+		System.out.println(" Application started...");
+		DesiredCapabilities cap = new DesiredCapabilities();
+		cap.setCapability("deviceName", "Redmi Note 7 Pro");
+		cap.setCapability("udid", "95b9be6e");
+		cap.setCapability("platformName", "Android");
+		cap.setCapability("platformVersion", "10");
+		cap.setCapability("appPackage", "com.sudlife.youmatter.app.uat");
+		cap.setCapability("appActivity", "com.caressa.allizhealth.app.MainActivity");
+		cap.setCapability("autograntpermission", "true");
+		cap.setCapability("automationName", "UiAutomator2");
+		cap.setCapability("IgnoreHiddenApiPolicyError", "true");	
+		driver = new AndroidDriver(new URL("http://127.0.0.1:4723"),cap);
+		driver.manage().timeouts().implicitlyWait(10,TimeUnit.SECONDS);		
+		
+	
+		WebElement firstPage = driver.findElement(By.id("com.sudlife.youmatter.app.uat:id/btnNext"));
+		firstPage.click();
+		WebElement secondPage = driver.findElement(By.id("com.sudlife.youmatter.app.uat:id/btnNext"));
+		secondPage.click();
+		WebElement thirdPage = driver.findElement(By.id("com.sudlife.youmatter.app.uat:id/btnNext"));
+		thirdPage.click();
+		
+		
+		//Printing toast msg and comparing actual toast msg and written toast msg
+		WebElement loginBtn = driver.findElement(By.id("com.sudlife.youmatter.app.uat:id/btn_login"));
+		//loginBtn.click();
+		
+		WebElement checkBox = driver.findElement(By.id("com.sudlife.youmatter.app.uat:id/termsCheckBox"));
+		checkBox.click();
+		WebElement detailCheckBox = driver.findElement(By.id("com.sudlife.youmatter.app.uat:id/healthDetailsCheckBox"));
+		detailCheckBox.click();
+		
+		WebElement email = driver.findElement(By.id("com.sudlife.youmatter.app.uat:id/edt_login_emailaddress"));
+		WebElement password = driver.findElement(By.id("com.sudlife.youmatter.app.uat:id/edt_login_password"));
+		
+		//passing correct details
+		email.sendKeys("preetivishwa07@gmail.com");
+		driver.hideKeyboard();
+		password.sendKeys("Admin@12345");
+		driver.hideKeyboard();
+		loginBtn.click();
+		
+		WebElement element = (WebElement) driver.findElement(MobileBy.AndroidUIAutomator(
+		        "new UiScrollable(new UiSelector().scrollable(true)).setMaxSearchSwipes(1)" +
+		         ".scrollIntoView(new UiSelector().text(\"exact_text\"))"));
+		
+				
+		WebElement Physical_Wellbeing = driver.findElement(By.id("com.sudlife.youmatter.app.uat:id/lbl_physical_wellbeing"));
+		Physical_Wellbeing.click();
+		
+		driver.navigate().back();
+		
+		WebElement Hydration_track_click= driver.findElement(By.xpath("//android.widget.TextView[@text='Hydration Tracker']"));
+		Hydration_track_click.click();
+		
+		WebElement IMG_Click_event= driver.findElement(By.id("com.sudlife.youmatter.app.uat:id/img_calculate"));
+		IMG_Click_event.click();
+		
+		WebElement IMG_Click_event1= driver.findElement(By.id("com.sudlife.youmatter.app.uat:id/img_add_today_intake"));
+		IMG_Click_event1.click();
+		
+		WebElement IMG_Click_event2= driver.findElement(By.id("com.sudlife.youmatter.app.uat:id/img_track"));
+		IMG_Click_event2.click();
+		
+		
+		WebElement Edit_target= driver.findElement(By.xpath("//android.widget.TextView[@text='Calculate/Edit Daily Water Intake Target']"));
+		Edit_target.click();
+		
+		WebElement Default_Calculate_water= driver.findElement(By.xpath("//android.widget.Button[@text='Calculate']"));
+		Default_Calculate_water.click();
+		
+		WebElement Custom_target= driver.findElement(By.xpath("//android.widget.TextView[@text='Custom Target']"));
+		Custom_target.click();
+		
+		WebElement Custom_target_edit= driver.findElement(By.xpath("//android.widget.EditText[@text='1000 - 10000']"));
+		Custom_target_edit.click();
+		Custom_target_edit.sendKeys("2000");
+		
+		driver.navigate().back();
+		
+		Thread.sleep(5000);
+		
+		WebElement setcustomtarget_btn= driver.findElement(By.id("com.sudlife.youmatter.app.uat:id/btn_calculate_intake"));
+		setcustomtarget_btn.click();
+		
+		driver.quit();
+		
+
+}
+
+}
